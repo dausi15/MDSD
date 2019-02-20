@@ -16,7 +16,9 @@ class SystemBuilder(object):
 
 
     def build_model(self, elements, y):
-        states = (s for s in elements if isinstance(s, model.State))
+        states = (s for s in elements.values() if isinstance(s, model.State))
+        _elements = list(elements.keys())
+        print(_elements)
         myfile = open("testfile.xml", "w")
         current_state = None
         init_xml()
@@ -24,7 +26,7 @@ class SystemBuilder(object):
             build_state(x.name,y)
             y+=150
 
-        for e in elements:
+        for e in elements.values():
             if isinstance(e, model.State):
                 current_state = e
                 print(e.name)
@@ -34,7 +36,11 @@ class SystemBuilder(object):
                 raise Exception("initial state missing")
 
             elif isinstance(e, model.Transition) and current_state:
-                build_transition(current_state.name, e.name, e.target.name)
+                print(_elements.index(current_state.name)-_elements.index(e.target.name))
+                print("c "+current_state.name)
+                print("t "+e.target.name)
+                direction = _elements.index(current_state.name)-_elements.index(e.target.name)
+                build_transition(current_state.name, e.name, e.target.name, direction)
 
         end_xml()
         myfile.write(''.join([part for part in code]))
@@ -62,25 +68,28 @@ def build_state(name, y):
     code.append(mxCell+mxGeometry+endMxCell)
 
 
-def build_transition(source, name, target):
-    mxCell = '<mxCell id="'+name+'" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.25;' \
-             'exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;' \
-             'orthogonalLoop=1;" edge="1" parent="1" source="'+source+'" ' \
-             'target="'+target+'">\n'
-
-    mxCell = '<mxCell id="'+name+'" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="'+source+'" target="'+target+'" edge="1">\n'
+def build_transition(source, name, target, direction):  #down is a negative integer, up is positive
+    if direction < 0:
+        exitX = 0.25
+        entryX = 0.25
+    else:
+        exitX = 0.75
+        entryX = 0.75
+    mxCell = '<mxCell id="'+name+'" style="rounded=0;html=1;exitX='+str(exitX)+';exitY=0;exitDx=0;exitDy=0;entryX='+str(entryX)+';entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="'+source+'" target="'+target+'" edge="1">\n'
     mxGeometry = '<mxGeometry relative="1" as="geometry"/>\n'
     endMxCell = '</mxCell>\n'
     code.append(mxCell + mxGeometry + endMxCell)
 
 
 def process_raw_definition(elements):
-    result = []
+    result = {}
     for e in elements[0]:
         if isinstance(e, model.State):
-            result.append(e)
+            #result.append(e)
+            result[e.name] = e
         elif isinstance(e, model.Transition):
-            result.append(e)
+            #result.append(e)
+            result[e.name] = e
         else:
             raise Exception('Not supported by dsl')
     return result

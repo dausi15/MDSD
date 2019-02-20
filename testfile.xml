@@ -17,10 +17,10 @@
 <mxCell id="PLUS [power == MAX_POWER]" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="POWER_ON" target="MAX_POWER" edge="1">
 <mxGeometry relative="1" as="geometry"/>
 </mxCell>
-<mxCell id="MINUS [power == MIN_POWER]" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="POWER_ON" target="POWER_OFF" edge="1">
+<mxCell id="MINUS [power == MIN_POWER]" style="rounded=0;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="POWER_ON" target="POWER_OFF" edge="1">
 <mxGeometry relative="1" as="geometry"/>
 </mxCell>
-<mxCell id="MINUS" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="MAX_POWER" target="POWER_ON" edge="1">
+<mxCell id="MINUS" style="rounded=0;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="MAX_POWER" target="POWER_ON" edge="1">
 <mxGeometry relative="1" as="geometry"/>
 </mxCell>
 </root>
