@@ -1,0 +1,27 @@
+<mxGraphModel dx="1426" dy="778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<root>
+<mxCell id="0"/>
+<mxCell id="1" parent="0"/>
+<mxCell id="POWER_OFF" value="POWER_OFF" style="shape=rect;rounded=1;html=1;whiteSpace=wrap;align=center;" parent="1" vertex="1">
+<mxGeometry x="290" y="140" width="100" height="40" as="geometry"/>
+</mxCell>
+<mxCell id="POWER_ON" value="POWER_ON" style="shape=rect;rounded=1;html=1;whiteSpace=wrap;align=center;" parent="1" vertex="1">
+<mxGeometry x="290" y="290" width="100" height="40" as="geometry"/>
+</mxCell>
+<mxCell id="MAX_POWER" value="MAX_POWER" style="shape=rect;rounded=1;html=1;whiteSpace=wrap;align=center;" parent="1" vertex="1">
+<mxGeometry x="290" y="440" width="100" height="40" as="geometry"/>
+</mxCell>
+<mxCell id="PLUS" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="POWER_OFF" target="POWER_ON" edge="1">
+<mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="PLUS [power == MAX_POWER]" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="POWER_ON" target="MAX_POWER" edge="1">
+<mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="MINUS [power == MIN_POWER]" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="POWER_ON" target="POWER_OFF" edge="1">
+<mxGeometry relative="1" as="geometry"/>
+</mxCell>
+<mxCell id="MINUS" style="rounded=0;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="MAX_POWER" target="POWER_ON" edge="1">
+<mxGeometry relative="1" as="geometry"/>
+</mxCell>
+</root>
+</mxGraphModel>
